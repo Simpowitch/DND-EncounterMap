@@ -7,6 +7,7 @@ public class GridSystem : MonoBehaviour
     public GameObject gridVisual;
 
     public int feetPerSquare = 5;
+    public int mapSize = 100;
 
     #region Singleton
     public static GridSystem instance;
@@ -72,12 +73,12 @@ public class GridSystem : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        for (float x = 0; x < 100; x += metersPerSquare)
+        for (float x = 0; x < mapSize; x += metersPerSquare)
         {
-            for (float z = 0; z < 100; z += metersPerSquare)
+            for (float z = 0; z < mapSize; z += metersPerSquare)
             {
-                var point = GetNearestPointOnGrid(new Vector3(x-50, 0f, z-50));
-                Gizmos.DrawCube(point, new Vector3 (0.1f, 0.1f, 0.1f));
+                var point = GetNearestPointOnGrid(new Vector3(x- mapSize/2, 0f, z- mapSize/2));
+                Gizmos.DrawWireCube(point, new Vector3 (0.1f, 0.1f, 0.1f));
             }
 
         }
